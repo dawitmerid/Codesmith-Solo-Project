@@ -1,0 +1,52 @@
+{
+  "name": "codesmith-solo-project",
+  "version": "1.0.0",
+  "description": "codesmith solo project",
+  "main": "./client/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server/server.js",
+    "build": "webpack",
+    "dev": "concurrently \"NODE_ENV=development webpack-dev-server\" \"NODE_ENV=development node server.js\""
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "cient"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.1.2",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1",
+    "nodemon": "^2.0.22",
+    "react": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.0",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "concurrently": "^8.2.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^7.12.0",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.88.0",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
