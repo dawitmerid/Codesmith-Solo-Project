@@ -7,21 +7,35 @@ const app = express();
 const PORT = 3000;
 
 /**
+ * require routers
+ */
+const authRouter = require('./routes/auth');
+const dashboardRouter = require('./routes/dashboard');
+
+/**
  * handle parsing request body
  */
-app.use(express.json());
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 /**
  * serve the main index file when request goes to '/'
  */
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/index.html'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/index.html'));
+});
 
 /**
  * handle requests for static files
  */
-app.use(express.static(path.resolve(__dirname, '../client')));
+app.use('/client', express.static(path.resolve(__dirname, '../client')));
+
+/**
+ * define route handlers
+ */
+app.use('/auth', authRouter);
+app.use('/dashboard', dashboardRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>

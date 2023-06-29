@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.(s(a|c)ss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
@@ -38,6 +38,11 @@ module.exports = {
         use: {
           loader: 'url-loader',
         },
+      },
+      {
+        test: /\.m?js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
       },
     ],
   },
@@ -53,11 +58,25 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
+    // host: 'localhost',
+    // port: 8080,
+    // enable HMR on the devServer
+    hot: true,
+    // fallback to root for other urls
+    historyApiFallback: true,
     static: {
       publicPath: '/build',
     },
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/dashboard': {
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true,
+      },
+      '/assets/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
     },
   },
 };
