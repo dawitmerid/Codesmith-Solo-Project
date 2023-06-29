@@ -34,6 +34,8 @@ app.use('/client', express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
+
+console.log('REACHED the server before entering the router');
 app.use('/auth', authRouter);
 app.use('/dashboard', dashboardRouter);
 

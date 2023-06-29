@@ -9,7 +9,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // sets the name of the DB that our collections are part of
-    dbName: 'codesmith solo project',
+    dbName: 'codesmith_solo_project',
   })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));
@@ -46,9 +46,9 @@ const postSchema = new Schema({
 });
 
 // creats a model for the 'user' collection that will be part of the export
-const Post = mongoose.model('post', userSchema);
+const Posts = mongoose.model('post', postSchema);
 
 module.exports = {
   User,
-  Post,
+  Posts,
 };

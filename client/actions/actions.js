@@ -11,14 +11,14 @@ export const fetchAllActionCreator = () => async (dispatch) => {
   }
 };
 
-// export const createPostActionCreator = () => async (dispatch) => {
-//   try {
-//     const {data} = await api.createPost();
-//     return dispatch({type: types.CREATE_POST, payload: data})
-//   } catch (error) {
-//     console.log(error.message)
-//   }
-// };
+export const createPostActionCreator = (post) => async (dispatch) => {
+  try {
+    const { data } = await api.createPost(post);
+    return dispatch({ type: types.CREATE_POST, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 // build an addMarket function
 

@@ -12,7 +12,8 @@ const postsReducer = (posts = initialState, action) => {
       return action.payload;
     }
     case types.CREATE_POST: {
-      console.log('action create post register');
+      console.log('action CREATE POST register');
+      return [...posts, action.payload];
     }
 
     default: {

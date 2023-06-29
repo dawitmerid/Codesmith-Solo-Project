@@ -3,11 +3,12 @@ import React, { useEffect } from 'react';
 import Header from './header';
 import Main from './main';
 import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import CreatePost from './createPost';
 
 const Dashboard = () => {
   const posts = useSelector((state) => state.posts);
-  console.log(posts);
-
+  const handleClick = () => {};
   // right panel component
   const RightPanel = () => {
     return <div className='right-panel empty-blue-space'></div>;
@@ -21,7 +22,9 @@ const Dashboard = () => {
           <button className='btn option-btn-active'>New Posts</button>
           <button className='btn option-btn'>Liked</button>
           <button className='btn option-btn'>My Posts</button>
-          <button className='btn option-btn'>Make New Post</button>
+          <Link to='/dash/newpost' className='btn option-btn'>
+            Make New Post
+          </Link>
         </div>
         <div className='left-empty-space empty-blue-space'></div>
       </div>
@@ -30,10 +33,21 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard'>
+      {/* <Routes>
+        <Route path='/dash' element={<Header />} />
+        <Route path='/' element={<Main posts={posts} />} />
+        <Route path='/' element={<LeftPanel />} />
+        <Route path='/' element={<RightPanel />} />
+      </Routes> */}
+
       <Header />
-      <Main />
+      <Main posts={posts} />
       <LeftPanel />
       <RightPanel />
+
+      <Routes>
+        <Route path='/newpost' element={<CreatePost />} />
+      </Routes>
     </div>
   );
 };

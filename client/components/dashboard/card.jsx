@@ -1,6 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-const Card = () => {
+const Card = (props) => {
+  const { picUrl, category, description, likeCount, location, locationName } =
+    props;
+
   return (
     <div className='card'>
       <div className='post-icon-container'>
@@ -15,21 +19,12 @@ const Card = () => {
         </button>
       </div>
       <div className='posted-pic'>
-        <img
-          src='https://images.pexels.com/photos/236940/pexels-photo-236940.jpeg'
-          alt='posted-img'
-          className='posted-img'
-        />
+        <img src={picUrl} alt='posted-img' className='posted-img' />
       </div>
       <div className='card-details'>
-        <h5 className='card-name'>Rock Creek Park</h5>
-        <p className='locaton'>2401 Tilden Street NW, Washington DC</p>
-        <p className='description'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          ipsum nesciunt consequuntur dolore voluptatibus harum architecto
-          blanditiis dolores maxime eligendi, consectetur laboriosam, voluptates
-          odio possimus, temporibus quis est illum accusamus.
-        </p>
+        <h5 className='card-name'>{locationName}</h5>
+        <p className='locaton'>{location}</p>
+        <p className='description'>{description}</p>
       </div>
     </div>
   );

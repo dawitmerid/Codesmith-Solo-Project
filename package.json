@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "codesmith solo project",
   "main": "./client/index.js",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "NODE_ENV=production nodemon server/server.js --hot --progress",
     "build": "webpack",
