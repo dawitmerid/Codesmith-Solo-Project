@@ -9,7 +9,7 @@ import CreatePost from './components/dashboard/createPost';
 import Dashboard from './components/dashboard/dashboard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllActionCreator } from './actions/actions';
-import { StaticRouter } from 'react-router-dom/server';
+import Layout from './layout';
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -19,16 +19,21 @@ const App = (props) => {
   }, [dispatch]);
 
   return (
-    <div className='app'>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/dash' element={<Dashboard />} />
-        <Route path='/dash/newpost' element={<CreatePost />} />
-      </Routes>
+    // <Login />
 
-      {/* <CreatePost /> */}
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        {/* public routes */}
+        <Route index element={<Login />} />
+        <Route path='signup' element={<Signup />} />
+
+        {/* we want to protect these routes */}
+        <Route path='dash' element={<Dashboard />} />
+
+        {/* catch all */}
+        <Route path='*' element={<h1>NOTHING TO SEE HERE</h1>} />
+      </Route>
+    </Routes>
   );
 };
 

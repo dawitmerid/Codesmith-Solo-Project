@@ -322,6 +322,14 @@ END OF Starter File
   display: none;
   margin: 0;
 }
+.error-message-none {
+  display: none;
+  color: $third-500;
+  //   font-weight: bold;
+  font-style: italic;
+  display: none;
+  margin: 0;
+}
 
 .first-last-name {
   display: flex;

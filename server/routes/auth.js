@@ -1,31 +1,24 @@
 const express = require('express');
-
-const cookieController = require('../controllers/cookieController');
-const sessionController = require('../controllers/sessionController');
-const userController = require('../controllers/userController');
-
 const router = express.Router();
+const userController = require('../controllers/userController');
 
 /**
  * signup
  */
-// router.get('/signup', userController.createUser, (req, res) => {});
+router.post('/register', userController.createUser, (req, res) => {
+  return res.status(200).json(res.locals.newUser);
+});
 
 // /**
 //  * login
 //  */
 
-router.route('/').get((req, res) => {});
-
-// app.post('/login', userController.verifyUser, (req, res) => {
-//   // what should happen here on successful log in?
-// });
+router.post('/login', userController.verifyUser, (req, res) => {
+  // what should happen here on successful log in?
+});
 
 /**
  * Authorized routes
  */
-// router.get('/dashboard', (req, res) => {
-//   // res.sendFile(path.resolve(__dirname, '../client/secret.html'));
-// });
 
 module.exports = router;

@@ -8,7 +8,7 @@ const Card = (props) => {
   return (
     <div className='card'>
       <div className='post-icon-container'>
-        <button className='post-icon'>
+        <button onClick={() => {}} className='post-icon'>
           <span className='material-symbols-outlined post-icons'>delete</span>
         </button>
         <button className='post-icon'>

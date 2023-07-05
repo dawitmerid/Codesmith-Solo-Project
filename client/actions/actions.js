@@ -19,6 +19,14 @@ export const createPostActionCreator = (post) => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const deletePostActionCreator = (id) => async (dispatch) => {
+  try {
+    await api.deletePost(id);
+    return dispatch({ type: types.DELETE_POST, payload: id });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 // build an addMarket function
 

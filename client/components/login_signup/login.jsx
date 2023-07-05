@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const handleChange = (event) => {
@@ -18,7 +19,9 @@ const Login = () => {
         <p>or</p>
         <div></div>
       </div>
-      <button className='btn'>Sign up</button>
+      <Link to='/signup' className='btn'>
+        Sign up
+      </Link>
     </form>
   );
 };

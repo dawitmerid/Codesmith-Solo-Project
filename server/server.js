@@ -2,9 +2,17 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+// const corsOptions = require('./config/corsOptions');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = 3000;
+
+const corsOptions = {
+  origin: 'http://localhost:8080',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 /**
  * require routers
@@ -12,12 +20,18 @@ const PORT = 3000;
 const authRouter = require('./routes/auth');
 const dashboardRouter = require('./routes/dashboard');
 
+// Cross-origin Resource Sharing
+app.use(cors(corsOptions));
+
+// built-in middleware to handle urlencoded form data
+app.use(express.urlencoded({ extended: false }));
 /**
- * handle parsing request body
+ * built in middleware to handle parsing request body
  */
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(express.json());
+
+// middleware for cookies
+app.use(cookieParser());
 
 /**
  * serve the main index file when request goes to '/'
@@ -37,6 +51,10 @@ app.use('/client', express.static(path.resolve(__dirname, '../client')));
 
 console.log('REACHED the server before entering the router');
 app.use('/auth', authRouter);
+app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
+// protect the dashboard with verifyJWT
+app.use(verifyJWT);
 app.use('/dashboard', dashboardRouter);
 
 // catch-all route handler for any requests to an unknown route

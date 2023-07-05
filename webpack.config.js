@@ -68,14 +68,30 @@ module.exports = {
       publicPath: '/build',
     },
     proxy: {
+      '/': {
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true,
+      },
       '/dashboard': {
         target: 'http://localhost:3000/',
         secure: false,
         changeOrigin: true,
       },
-      '/assets/**': {
+      '/auth/register': {
         target: 'http://localhost:3000/',
         secure: false,
+        changeOrigin: true,
+      },
+      '/auth/login': {
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true,
+      },
+      '/refresh': {
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true,
       },
     },
   },

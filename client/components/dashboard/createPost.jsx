@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPostActionCreator } from '../../actions/actions';
-
+import { Link } from 'react-router-dom';
 const CreatePost = () => {
   const [postData, setPostData] = useState({
     location_name: '',
@@ -128,8 +128,11 @@ const CreatePost = () => {
       </div>
       {/* END OF single row */}
       <div className='form-row'>
-        <label htmlFor='empty space to push the button to the right'> </label>
+        {/* <label htmlFor='empty space to push the button to the right'> </label> */}
         <div className='form-row'>
+          <Link to='/dash' className='btn'>
+            Back
+          </Link>
           <button className='btn' type='submit'>
             Post
           </button>

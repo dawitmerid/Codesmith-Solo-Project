@@ -26,6 +26,7 @@ const Dashboard = () => {
             Make New Post
           </Link>
         </div>
+
         <div className='left-empty-space empty-blue-space'></div>
       </div>
     );
@@ -33,13 +34,6 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      {/* <Routes>
-        <Route path='/dash' element={<Header />} />
-        <Route path='/' element={<Main posts={posts} />} />
-        <Route path='/' element={<LeftPanel />} />
-        <Route path='/' element={<RightPanel />} />
-      </Routes> */}
-
       <Header />
       <Main posts={posts} />
       <LeftPanel />

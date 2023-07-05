@@ -1,5 +1,5 @@
+const { default: mongoose } = require('mongoose');
 const models = require('../models/models');
-
 const postController = {};
 
 postController.getPosts = async (req, res, next) => {
@@ -10,7 +10,7 @@ postController.getPosts = async (req, res, next) => {
     })
     .catch((error) => {
       return next({
-        log: `Express error handler caught unknown middleware error: ERROR : ${err}`,
+        log: `Express error handler caught unknown middleware error: ERROR : ${error}`,
         status: err.status || 400,
       });
     });
@@ -40,9 +40,30 @@ postController.createPost = async (req, res, next) => {
     .catch((error) => {
       console.log('ENTER ERROR');
       return next({
-        log: `Express error handler caught unknown middleware error: ERROR : ${err}`,
+        log: `Express error handler caught unknown middleware error: ERROR : ${error}`,
         status: err.status || 400,
       });
     });
 };
+
+postController.deletePost = (req, res, next) => {
+  const { id: _id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send('No post with that id');
+
+  models.Posts.findByIdAndRemove(id)
+    .then((deletedDoc) => {
+      res.locals.deletedPost = deletedDoc;
+      return next();
+    })
+    .catch((error) => {
+      console.log('ENTER ERROR');
+      return next({
+        log: `Express error handler caught unknown middleware error: ERROR : ${error}`,
+        status: err.status || 400,
+      });
+    });
+};
+
 module.exports = postController;
