@@ -54,7 +54,7 @@ app.use('/auth', authRouter);
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 // protect the dashboard with verifyJWT
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use('/dashboard', dashboardRouter);
 
 // catch-all route handler for any requests to an unknown route

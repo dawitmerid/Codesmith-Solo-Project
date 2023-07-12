@@ -22,7 +22,7 @@ const Dashboard = () => {
           <button className='btn option-btn-active'>New Posts</button>
           <button className='btn option-btn'>Liked</button>
           <button className='btn option-btn'>My Posts</button>
-          <Link to='/dash/newpost' className='btn option-btn'>
+          <Link to='/newpost' className='btn option-btn'>
             Make New Post
           </Link>
         </div>

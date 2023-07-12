@@ -20,20 +20,21 @@ const App = (props) => {
 
   return (
     // <Login />
+    <Dashboard />
 
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        {/* public routes */}
-        <Route index element={<Login />} />
-        <Route path='signup' element={<Signup />} />
+    // <Routes>
+    //   <Route path='/' element={<Layout />}>
+    //     {/* public routes */}
+    //     <Route index element={<Login />} />
+    //     <Route path='signup' element={<Signup />} />
 
-        {/* we want to protect these routes */}
-        <Route path='dash' element={<Dashboard />} />
+    //     {/* we want to protect these routes */}
+    //     <Route path='dash' element={<Dashboard />} />
 
-        {/* catch all */}
-        <Route path='*' element={<h1>NOTHING TO SEE HERE</h1>} />
-      </Route>
-    </Routes>
+    //     {/* catch all */}
+    //     <Route path='*' element={<h1>NOTHING TO SEE HERE</h1>} />
+    //   </Route>
+    // </Routes>
   );
 };
 
